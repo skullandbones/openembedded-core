@@ -533,7 +533,7 @@ def get_rootfs_size(d):
     initramfs_fstypes = d.getVar('INITRAMFS_FSTYPES') or ''
     initramfs_maxsize = d.getVar('INITRAMFS_MAXSIZE')
 
-    output = subprocess.check_output(['du', '-ks',
+    output = subprocess.check_output(['du', '-ks', '--apparent-size',
                                       d.getVar('IMAGE_ROOTFS')])
     size_kb = int(output.split()[0])
 
